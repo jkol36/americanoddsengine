@@ -1,0 +1,16 @@
+FROM node:onbuild
+
+COPY . /src
+WORKDIR /src
+
+RUN npm install
+
+ENV NODE_ENV production
+ENV DATABASE_URL "mongodb://172.31.3.142:27017/edgebet"
+ENV ODDS_TYPES 0,1,3,4,5,6291457
+ENV SPORTS 1,3,4,5,6,7,8
+ENV BOOKMAKERS 613,83,314
+ENV DAYS_AHEAD 2
+ENV FIREBASE_SECRET zXb0LOQHlZ3guFkUEqhnD9ctkc6sEh9vOFNyNuUf
+
+CMD ["npm", "start"]
